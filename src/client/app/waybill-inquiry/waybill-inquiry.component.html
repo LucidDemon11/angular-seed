@@ -1,0 +1,74 @@
+<div class="container">
+  <app-top-bar></app-top-bar>
+  <form [formGroup]="waybillForm" (ngSubmit)="onSubmitWaybill()">
+    <div class="container topBorder">
+      <h1>Waybill Inquire Form</h1>
+      <br>
+      <div class="row">
+        <div class="col-xs-6">
+          <div class="form-group form-inline">
+            <label for="equipmentNumber">Equip Initial Letters/ID Number</label>
+            <input class="form-control smInput" formControlName="equipmentInitial" id="equipmentInital" name="equipmentInitial" placeholder="ex: BNSF" type="text">
+            <input class="form-control" formControlName="equipmentNumber" id="equipmentNumber" name="equipmentNumber" placheolder="ex: 300535" type="number">
+          </div>
+        </div>
+        <div class="col-xs-6">
+          <div class="form-group form-inline">
+            <label for="date">Date Range</label>
+            <input class="form-control" formControlName="fromDate" id="fromDate" name="fromDate" placeholder="From" type="date">
+            <input class="form-control" formControlName="toDate" id="toDate" name="toDate" placeholder="To" type="date">
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-6">
+          <div class="form-group form-inline">
+            <label for="waybillRoad">Waybill Road Name</label>
+            <input class="form-control" formControlName="waybillRoad" id="waybillRoad" name="waybillRoad">
+          </div>
+        </div>
+        <div class="col-xs-6">
+          <div class="form-group form-inline">
+            <label for="loadEmpty">Load/Empty select</label>
+            <select class="form-control" id="loadEmpty" name="loadEmpty" formControlName="loadEmpty">
+                <option *ngFor="let loadEmpty of loadEmptyOptions" [value]="loadEmpty">{{ loadEmpty }}</option>
+            </select>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-6">
+          <div class="form-group form-inline">
+            <label for="waybillNumber">Number Way</label>
+            <input class="form-control" id="waybillNumber" name="waybillNumber" type="number" formControlName="waybillNumber">
+          </div>
+        </div>
+        <div class="col-xs-6">
+          <div class="form-group form-inline">
+            <label for="status">Stat</label>
+            <select class="form-control" id="status" name="status" formControlName="status">
+              <option *ngFor="let status of statusOptions" [value]="status">{{ status }}</option>
+            </select>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="container">
+      <div class="col-xs-5 topBorder">
+        <app-shipper-cosignee [shipperCosigneeGroup]="waybillForm.get('shipperCosigneeGroup')"></app-shipper-cosignee>
+      </div>
+      <div class="col-xs-6 topBorder rightComponent">
+        <app-station [stationGroup]="waybillForm.get('stationGroup')"></app-station>
+      </div>
+    </div>
+    <div class="container">
+      <div class="col-xs-5 topBorder">
+        <app-bill-lading [billLadingGroup]="waybillForm.get('billLadingGroup')"></app-bill-lading>
+      </div>
+      <div class="col-xs-6 topBorder rightComponent">
+        <app-commodity [commodityGroup]="waybillForm.get('commodityGroup')"></app-commodity>
+      </div>
+    </div>
+    <button type="submit" class="btn btn-primary">Submit to console</button>
+  </form>
+</div>

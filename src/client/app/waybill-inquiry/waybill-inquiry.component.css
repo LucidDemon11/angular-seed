@@ -1,0 +1,24 @@
+.topBorder {
+  border-top: 2px solid red;
+  padding-top: 6px;
+}
+
+.xsInput {
+  width: 75px;
+}
+
+.smInput {
+  width: 100px;
+}
+
+.mdInput {
+  width: 125px;
+}
+
+.lgInput {
+
+}
+
+.rightComponent {
+  float: right;
+}
